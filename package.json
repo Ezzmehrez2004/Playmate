@@ -1,0 +1,22 @@
+{
+  "name": "playmate-web",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Sports matchmaking coursework website with independent username/password accounts.",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "start": "node scripts/local-server.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "dev:worker": "wrangler dev",
+    "db:migrate": "wrangler d1 migrations apply DB --remote",
+    "db:seed": "wrangler d1 execute DB --remote --file seeds/demo_accounts.sql",
+    "deploy": "node scripts/check-config.mjs && wrangler deploy",
+    "build": "wrangler deploy --dry-run --outdir build"
+  },
+  "devDependencies": {
+    "wrangler": "4.92.0"
+  }
+}
